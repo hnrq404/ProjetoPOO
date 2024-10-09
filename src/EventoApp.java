@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -13,6 +14,13 @@ public class EventoApp extends JFrame {
     public EventoApp() {
         super("Sistema de Cadastro de Eventos");
         setLayout(new BorderLayout());
+
+        setSize(700, 600);
+        setMinimumSize(new Dimension(800, 600)); // Evitar que o tamanho seja menor
+        setResizable(false); // Impede o redimensionamento
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // setVisible(true);
 
         JTabbedPane tabbedPane = new JTabbedPane();
 
@@ -48,15 +56,31 @@ public class EventoApp extends JFrame {
         numeroField = new JTextField(5); // Definindo número de colunas
         eventoPanel.add(numeroField);
 
+        eventoPanel.add(new JLabel(""));
         JButton cadastrarEventoBtn = new JButton("Cadastrar Evento");
+        //Estilização do botão
+        cadastrarEventoBtn.setForeground(Color.DARK_GRAY); 
+        cadastrarEventoBtn.setBackground(Color.cyan);
+        cadastrarEventoBtn.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 1));
+        cadastrarEventoBtn.setFont(new Font("Arial", Font.TYPE1_FONT ,14));
+        cadastrarEventoBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cadastrarEventoBtn.setBackground(Color.lightGray);  // Mudar cor ao passar o mouse
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cadastrarEventoBtn.setBackground(Color.cyan); // Voltar para cor original ao sair com o mouse
+            }
+        });
+        cadastrarEventoBtn.setPreferredSize(new Dimension(50, 25));
         cadastrarEventoBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 cadastrarEvento();
             }
         });
-        eventoPanel.add(cadastrarEventoBtn);
 
+        eventoPanel.add(cadastrarEventoBtn);
         tabbedPane.addTab("Cadastrar Evento", eventoPanel);
+        add(tabbedPane, BorderLayout.CENTER);
 
         // Aba de Cadastro de Participante
         JPanel participantePanel = new JPanel(new GridLayout(8, 2, 10, 10));
@@ -79,7 +103,8 @@ public class EventoApp extends JFrame {
         participantePanel.add(emailParticipanteField);
 
         participantePanel.add(new JLabel("Tipo de Participante:"));
-        String[] tipos = { "espectador", "palestrante" };
+        String[] tipos = { "Espectador", "Palestrante" };
+
         tipoParticipanteBox = new JComboBox<>(tipos);
         participantePanel.add(tipoParticipanteBox);
 
@@ -87,15 +112,34 @@ public class EventoApp extends JFrame {
         eventoComboBox = new JComboBox<>();
         participantePanel.add(eventoComboBox);
 
+        eventoComboBox.setBorder(new LineBorder(Color.lightGray, 1));
+
+        participantePanel.add(new JLabel(""));
         JButton cadastrarParticipanteBtn = new JButton("Cadastrar Participante");
+        //Estilização do botão
+        cadastrarParticipanteBtn.setForeground(Color.DARK_GRAY); 
+        cadastrarParticipanteBtn.setBackground(Color.cyan);
+        cadastrarParticipanteBtn.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 1));
+        cadastrarParticipanteBtn.setFont(new Font("Arial", Font.TYPE1_FONT ,14));
+        cadastrarParticipanteBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cadastrarParticipanteBtn.setBackground(Color.lightGray);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cadastrarParticipanteBtn.setBackground(Color.cyan); 
+            }
+        });
+        cadastrarParticipanteBtn.setPreferredSize(new Dimension(50, 25));
+
         cadastrarParticipanteBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 cadastrarParticipante();
             }
         });
-        participantePanel.add(cadastrarParticipanteBtn);
 
+        participantePanel.add(cadastrarParticipanteBtn);
         tabbedPane.addTab("Cadastrar Participante", participantePanel);
+        add(tabbedPane, BorderLayout.CENTER);
 
         // Aba para exibir Eventos Cadastrados
         JPanel eventoExibirPanel = new JPanel(new BorderLayout());
@@ -116,7 +160,7 @@ public class EventoApp extends JFrame {
         tabbedPane.addTab("Participantes Cadastrados", participanteExibirPanel);
 
         // Área de exibição de dados (log de atividades)
-        displayArea = new JTextArea(10, 30);
+        displayArea = new JTextArea(8, 30);
         displayArea.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(displayArea);
         JPanel displayPanel = new JPanel();
@@ -172,11 +216,17 @@ public class EventoApp extends JFrame {
             String cpf = cpfParticipanteField.getText();
             String email = emailParticipanteField.getText();
             String tipo = (String) tipoParticipanteBox.getSelectedItem();
+            String tipoFormatado = tipo.toLowerCase();
             String nomeEventoSelecionado = (String) eventoComboBox.getSelectedItem();
+        
+            if (!tipoFormatado.equals("espectador") && !tipoFormatado.equals("palestrante")) {
+                JOptionPane.showMessageDialog(this, "Tipo de participante inválido! Deve ser Espectador ou Palestrante.", "Erro", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
 
             Evento eventoSelecionado = eventosList.stream().filter(e -> e.getNome().equals(nomeEventoSelecionado)).findFirst().orElse(null);
             if (eventoSelecionado != null) {
-                Participante participante = new Participante(nome, idade, cpf, email, tipo);
+                Participante participante = new Participante(nome, idade, cpf, email, tipoFormatado);
                 eventoSelecionado.cadastrarParticipante(participante);
 
                 JOptionPane.showMessageDialog(this, "Participante cadastrado com sucesso!");
@@ -187,6 +237,7 @@ public class EventoApp extends JFrame {
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Erro ao cadastrar participante. Verifique os dados!", "Erro", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
         }
     }
 
@@ -199,7 +250,7 @@ public class EventoApp extends JFrame {
             eventoInfoArea.append("Descrição: " + evento.getDescricao() + "\n");
             eventoInfoArea.append("Local: " + evento.getLocal().getRua() + ", " + evento.getLocal().getCidade() + ", " + evento.getLocal().getEstado() + "\n");
             eventoInfoArea.append("Capacidade: " + evento.getLocal().getCapacidade() + "\n");
-            eventoInfoArea.append("Número: " + evento.getLocal().getNumero() + "\n");
+            eventoInfoArea.append("Número: " + evento.getLocal().getNumero() + "\n\n");
         }
     }
 
