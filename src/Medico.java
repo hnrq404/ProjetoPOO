@@ -4,7 +4,7 @@ import java.util.List;
 public class Medico {
 	private String nome;
 	private int idade;
-	private int cpf;
+	private String cpf;
 	private String email;
 	private String crm;
 	private String especialidade;
@@ -13,7 +13,7 @@ public class Medico {
 	// Lista estática para armazenar médicos
 	private static List<Medico> medicos = new ArrayList<>();
 
-	public Medico(String nome, int idade, int cpf, String email, String crm, String especialidade) {
+	public Medico(String nome, int idade, String cpf, String email, String crm, String especialidade) {
 		this.nome = nome;
 		this.idade = idade;
 		this.cpf = cpf;
@@ -43,7 +43,7 @@ public class Medico {
 		return cpf;
 	}
 
-	public void setCPF(int var) {
+	public void setCPF(String var) {
 		this.cpf = var;
 	}
 

@@ -59,7 +59,6 @@ public class Consulta {
 	// Métodos para gerenciar a lista de consultas
 	public static void adicionarConsulta(Consulta consulta) {
 		consultas.add(consulta);
-		Log.d("Consulta", "Consulta adicionada. Total de consultas: " + consultas.size()); // Log para verificar
 	}
 
 	public static List<Consulta> obterConsultas() {

@@ -1,5 +1,3 @@
-import clinicaMedica.Medico;
-
 public class Participante {
     private String nome;
     private int idade;
