@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:padding="16dp"
+        >
+
+
+        <EditText
+            android:id="@+id/nome"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/border"
+            android:fontFamily="@font/firasans"
+            android:hint="Nome do Médico"
+            android:padding="15dp"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColorHint="#FFB1B1B1"
+            android:layout_marginTop="5dp"
+            />
+
+        <EditText
+            android:id="@+id/idade"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/border"
+            android:fontFamily="@font/firasans"
+            android:hint="Idade do Médico"
+            android:padding="15dp"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColorHint="#FFB1B1B1"
+            android:layout_marginTop="5dp"
+            />
+
+        <EditText
+            android:id="@+id/crm"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/border"
+            android:fontFamily="@font/firasans"
+            android:hint="CRM do Médico"
+            android:padding="15dp"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColorHint="#FFB1B1B1"
+            android:layout_marginTop="5dp"
+            />
+
+        <EditText
+            android:id="@+id/especialidade"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/border"
+            android:fontFamily="@font/firasans"
+            android:hint="Especialidade do Médico"
+            android:padding="15dp"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColorHint="#FFB1B1B1"
+            android:layout_marginTop="5dp"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/cadastroPet"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="serif-monospace"
+            android:text="CADASTRAR MÉDICO"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:onClick="cadastrarMedico"
+
+            />
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/back_btn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/baseline_arrow_back_24"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/background_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="60dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/baseline_person_add_alt_24" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/baseline_playlist_add_two" />
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="60dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/baseline_view_list_two"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
