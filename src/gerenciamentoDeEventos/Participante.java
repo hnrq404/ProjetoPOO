@@ -1,9 +1,12 @@
+import clinicaMedica.Medico;
+
 public class Participante {
     private String nome;
     private int idade;
     private String cpf;
     private String email;
     private String tipo;
+
     public Participante(String nome, int idade, String cpf, String email, String tipo){
         this.idade = idade;
         this.cpf = cpf;
@@ -14,6 +17,15 @@ public class Participante {
             throw new IllegalArgumentException("O tipo deve ser 'espectador' ou 'palestrante'.");
         }
     }
+
+    public Participante (Medico medico){
+        this.nome = medico.getNome();
+        this.idade = medico.getIdade();
+        this.cpf = medico.getCPF();
+        this.email = medico.getEmail();
+        this.tipo = "palestrante";
+    }
+    
     public String getNome(){return this.nome;}
 
     public void setNome(String var){this.nome = var;}
