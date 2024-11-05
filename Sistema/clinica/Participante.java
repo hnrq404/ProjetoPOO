@@ -1,6 +1,7 @@
 package clinica;
 
 public class Participante {
+    private Medico medico;
     private String nome;
     private int idade;
     private String cpf;
@@ -23,7 +24,16 @@ public class Participante {
         this.idade = medico.getIdade();
         this.cpf = medico.getCPF();
         this.email = medico.getEmail();
+        this.medico = medico;
         this.tipo = "palestrante";
+    }
+
+    public String getEspecialidade() {
+        if (medico != null) {
+            return medico.getEspecialidade();
+        } else {
+            return "Não aplicável";
+        }
     }
     
     public String getNome(){return this.nome;}

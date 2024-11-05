@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Sistema {
+public class SistemaRestaurante {
     private static List<Mesa> mesas;
     private static Map<Integer, ItemDoPedido> cardapio;
     private static Map<String, Integer> contadorPedidos;
