@@ -17,6 +17,8 @@ public class MedicoActivity extends AppCompatActivity {
             startActivity(new Intent(this, MainActivity.class));
             finish();
         });
+
+
     }
 
     public void cadastrarMedico(View view) {
@@ -35,4 +37,6 @@ public class MedicoActivity extends AppCompatActivity {
 
         Toast.makeText(this, "Médico cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
     }
+
+
 }

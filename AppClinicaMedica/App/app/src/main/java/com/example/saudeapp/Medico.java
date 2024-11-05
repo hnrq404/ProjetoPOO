@@ -70,10 +70,13 @@ public class Medico {
 		System.out.println("Nome: " + nome + ",\nIdade: " + idade + ",\ncrm: " + crm + ",\nEspecialidade: " + especialidade + "\n");
 	}
 
+
 	// Métodos para gerenciar a lista de médicos
 	public static void adicionarMedico(Medico medico) {
 		medicos.add(medico);
 	}
+
+
 
 	public static List<Medico> obterMedicos() {
 		return medicos;

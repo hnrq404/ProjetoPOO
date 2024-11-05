@@ -2,7 +2,6 @@ package com.example.saudeapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -25,12 +24,11 @@ public class VerificarConsultasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verificar_consultas);
 
-
         listViewConsultas = findViewById(R.id.listViewConsultas);
         searchViewEspecialidade = findViewById(R.id.searchEspecialidade);
         consultaCountTextView = findViewById(R.id.consultaCountTextView);
 
-        //Voltar Tela Principal
+        // Voltar à tela principal
         findViewById(R.id.back_btn).setOnClickListener(view -> {
             startActivity(new Intent(this, MainActivity.class));
             finish();
@@ -45,20 +43,19 @@ public class VerificarConsultasActivity extends AppCompatActivity {
         searchViewEspecialidade.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                filtrarPacientesPorEspecialidade(query);
+                filtrarConsultasPorEspecialidade(query);
                 return true;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                // Opcional: Filtrar conforme o texto é digitado
-                filtrarPacientesPorEspecialidade(newText);
+                filtrarConsultasPorEspecialidade(newText);
                 return true;
             }
         });
 
-        // Atualizar a contagem de consultas
-        atualizarContagemDeConsultas(Consulta.obterConsultas());
+        // Exibir contagem total de consultas inicialmente
+        atualizarContagemDeConsultas(Consulta.obterConsultas().size());
     }
 
     // Método para carregar as consultas na lista
@@ -77,35 +74,33 @@ public class VerificarConsultasActivity extends AppCompatActivity {
         return listaConsultas;
     }
 
-    // Método para filtrar os pacientes por especialidade médica
-    private void filtrarPacientesPorEspecialidade(String especialidade) {
+    // Método para filtrar as consultas por especialidade
+    private void filtrarConsultasPorEspecialidade(String especialidade) {
         List<Consulta> consultas = Consulta.obterConsultas();
+        List<String> consultasFiltradas = new ArrayList<>();
+        int totalConsultasEspecialidade = 0;
 
-        // Usa o método 'filtrarPorEspecialidade' para obter os pacientes filtrados
-        List<Paciente> pacientesFiltrados = Paciente.filtrarPorEspecialidade(consultas, especialidade);
-        List<String> pacientesDetalhes = new ArrayList<>();
-
-        // Adiciona os detalhes de cada paciente filtrado na lista
-        for (Paciente paciente : pacientesFiltrados) {
-            String detalhesPaciente = "Nome: " + paciente.getNome() +
-                    ", Idade: " + paciente.getIdade() +
-                    ", Telefone: " + paciente.getTelefone() +
-                    ", Consultas Agendadas: " + paciente.contarConsultas(consultas); // Exibe a contagem de consultas
-            pacientesDetalhes.add(detalhesPaciente);
+        for (Consulta consulta : consultas) {
+            if (consulta.getMedico().getEspecialidade().equalsIgnoreCase(especialidade)) {
+                String detalhesConsulta = "Paciente: " + consulta.getPaciente().getNome() +
+                        ", Médico: " + consulta.getMedico().getNome() +
+                        ", Data: " + consulta.getData().toString();
+                consultasFiltradas.add(detalhesConsulta);
+                totalConsultasEspecialidade++;
+            }
         }
 
-        // Atualiza o adapter com os pacientes filtrados
+        // Atualizar o adapter com as consultas filtradas
         consultasAdapter.clear();
-        consultasAdapter.addAll(pacientesDetalhes);
+        consultasAdapter.addAll(consultasFiltradas);
         consultasAdapter.notifyDataSetChanged();
 
-        // Atualizar a contagem de consultas
-        atualizarContagemDeConsultas(consultas);
+        // Atualizar a contagem de consultas para a especialidade filtrada
+        atualizarContagemDeConsultas(totalConsultasEspecialidade);
     }
 
     // Método para atualizar a contagem de consultas no TextView
-    private void atualizarContagemDeConsultas(List<Consulta> consultas) {
-        int totalConsultas = consultas.size();
-        consultaCountTextView.setText("Total de consultas: " + totalConsultas);
+    private void atualizarContagemDeConsultas(int totalConsultas) {
+        consultaCountTextView.setText("Total de consultas da especialidade: " + totalConsultas);
     }
 }

@@ -4,12 +4,17 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import java.time.LocalDateTime
+
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
+
+
 
     fun cadastrarMedico(view: View?) {
         startActivity(Intent(this, MedicoActivity::class.java))

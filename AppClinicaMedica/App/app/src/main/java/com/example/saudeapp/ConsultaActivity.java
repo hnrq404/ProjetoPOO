@@ -21,6 +21,7 @@ public class ConsultaActivity extends AppCompatActivity {
             startActivity(new Intent(this, MainActivity.class));
             finish();
         });
+
     }
 
     public void marcarConsulta(View view) {
