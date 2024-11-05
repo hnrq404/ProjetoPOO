@@ -11,5 +11,11 @@ Este projeto visa criar três sistemas diferentes: <br>
 
 2 - Quais foram os itens mais pedidos no dia?<br>
 
+3 - Quantas consultas foram marcadas pra uma especialidade específica? <br>
+
+4 - Qual a capacidade de participantes por evento? <br>
+
+5 - 
+
 <br>
-Além disso, a integração que ocorre entre os nossos sistemas é fazer com que, quando um médico for cadastrado no sistema, ele ser automáticamente relacionado a um evento como palestrante.
+Além disso, a integração que ocorre entre os nossos sistemas é fazer com que, quando um participante for cadastrado, ele poderá ser criado usando um perfil já existente de um médico, no qual sempre será um palestrante.

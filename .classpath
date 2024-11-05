@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="src/AppClinicaMedica/App/app/src/main/java"/>
+	<classpathentry kind="src" path="src/clinicaMedica"/>
+	<classpathentry kind="src" path="src/gerenciamentoDeEventos"/>
+	<classpathentry kind="src" path="src/gerenciamentoDeRestaurante"/>
+	<classpathentry kind="lib" path="src/AppClinicaMedica/App/gradle/wrapper/gradle-wrapper.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
