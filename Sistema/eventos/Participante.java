@@ -1,11 +1,16 @@
-package clinica;
+package eventos;
+
+import clinica.Medico;
 
 public class Participante {
     private String nome;
     private int idade;
+    private String tipo;
+    
+    private Medico medico;
     private String cpf;
     private String email;
-    private String tipo;
+
 
     public Participante(String nome, int idade, String cpf, String email, String tipo){
         this.idade = idade;
@@ -23,6 +28,7 @@ public class Participante {
         this.idade = medico.getIdade();
         this.cpf = medico.getCPF();
         this.email = medico.getEmail();
+        this.medico = medico;
         this.tipo = "palestrante";
     }
     
@@ -43,6 +49,8 @@ public class Participante {
     public void setEmail(String var){this.email = var;}
 
     public String getTipo(){return this.tipo;}
+
+    public Medico getMedico(){return this.medico;}
 
     public void setTipo(String var){
         this.tipo = var;
