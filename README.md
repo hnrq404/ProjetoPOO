@@ -15,7 +15,7 @@ Este projeto visa criar três sistemas diferentes: <br>
 
 4 - Qual a capacidade de participantes por evento? <br>
 
-5 - 
+5 - Qual evento o palestrante participou?
 
 <br>
 Além disso, a integração que ocorre entre os nossos sistemas é fazer com que, quando um participante for cadastrado, ele poderá ser criado usando um perfil já existente de um médico, no qual sempre será um palestrante.
