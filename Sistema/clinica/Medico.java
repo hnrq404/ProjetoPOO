@@ -3,7 +3,7 @@ package clinica;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Medico {
+public abstract class Medico implements Agendavel {
 	private String nome;
 	private int idade;
 	private String cpf;
@@ -14,6 +14,21 @@ public class Medico {
 
 	// Lista estática para armazenar médicos
 	private static List<Medico> medicos = new ArrayList<>();
+
+	public abstract void realizarConsulta(); // Método abstrato para polimorfismo
+
+	 // Sobrecarga de métodos: Relatórios de médicos
+	 public void gerarRelatorio() {
+        System.out.println("Relatório do médico: " + nome + ", Especialidade: " + especialidade);
+    }
+
+    public void gerarRelatorio(String paciente) {
+        System.out.println("Relatório do médico: " + nome + ", Paciente atendido: " + paciente);
+    }
+
+    public void gerarRelatorio(String paciente, String data) {
+        System.out.println("Relatório do médico: " + nome + ", Paciente atendido: " + paciente + ", Data: " + data);
+    }
 
 	public Medico(String nome, int idade, String cpf, String email, String crm, String especialidade) {
 		this.nome = nome;

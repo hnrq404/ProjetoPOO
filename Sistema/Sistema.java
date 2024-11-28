@@ -1,11 +1,10 @@
 import clinica.*;
 import eventos.Participante;
 
-<<<<<<< HEAD
 public class Sistema {
     public static void main(String[] args) {
         // Criação do objeto Medico
-        Medico kristyson = new Medico("Kristyson", 21, "705.565.653-12", "Kris@gmai.com", "4002", "Otorrino");
+        Medico kristyson = new Pediatra("Kristyson", 21, "705.565.653-12", "Kris@gmai.com", "4002");
 
         // Criação do Participante Leandro com base no objeto Medico
         Participante leandro = new Participante(kristyson);
@@ -19,15 +18,6 @@ public class Sistema {
         System.out.println();  // Linha em branco para separar os participantes
 
         // Criação de outro Participante, sem especialidade
-=======
-public class Sistema{
-    public static void main(String[] args){
-        Medico Kristyson = new Medico("Kristyson", 21, "705.565.653-12",  "Kris@gmai.com", "4002", "Otorrino");
-        Participante Leandro = new Participante(Kristyson);
-        System.out.println(Leandro.getCPF());
-
-        System.out.println(Leandro.getMedico().getEspecialidade());
->>>>>>> accb009b02be76dc26f88d817b7abc692b0b3882
         Participante participante = new Participante("Henrique", 15, "1234123", "daniel@hotmai.com", "espectador");
 
         // Exibição das informações do participante Henrique

@@ -1,10 +1,9 @@
 package eventos;
 
-import clinica.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Evento {
+public abstract class Evento implements Reservavel {
     private String nome;
     private String descricao;
     private Local local;
@@ -21,6 +20,35 @@ public class Evento {
         }
         participantes.add(participante);
         local.addQuantidade();
+    }
+
+    // Implementação da interface Organizável
+    @Override
+    public void definirCronograma(String horario, String atividade) {
+        System.out.println("Atividade '" + atividade + "' definida para o horário: " + horario + " no evento '" + this.nome + "'.");
+    }
+
+    @Override
+    public void adicionarPalestrante(String nome) {
+        System.out.println("Palestrante '" + nome + "' adicionado ao evento '" + this.nome + "'.");
+    }
+
+    @Override
+    public void adicionarPalestrante(String nome, String areaDeEspecialidade) {
+        System.out.println("Palestrante '" + nome + "' (Especialidade: " + areaDeEspecialidade + ") adicionado ao evento '" + this.nome + "'.");
+    }
+
+    // Sobrecarga de métodos: Registro de participantes
+    public void registrarParticipante(String nome) {
+        System.out.println("Registrando o participante: " + nome + " no evento '" + this.nome + "'.");
+    }
+
+    public void registrarParticipante(String nome, String email) {
+        System.out.println("Registrando o participante: " + nome + " (Email: " + email + ") no evento '" + this.nome + "'.");
+    }
+
+    public void registrarParticipante(String nome, String email, String telefone) {
+        System.out.println("Registrando o participante: " + nome + " (Email: " + email + ", Telefone: " + telefone + ") no evento '" + this.nome + "'.");
     }
 
     public void setNome(String var){
@@ -41,6 +69,9 @@ public class Evento {
     public Local getLocal(){
         return this.local;
     }
+
+    public abstract void organizarEvento(); // Método abstrato para polimorfismo
+
     public void exibirDados(){
         System.out.println("Nome do evento: " + this.nome);
         System.out.println("Descrição do evento: " + this.descricao);
