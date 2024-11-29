@@ -19,3 +19,6 @@ Este projeto visa criar três sistemas diferentes: <br>
 
 <br>
 Além disso, a integração que ocorre entre os nossos sistemas é fazer com que, quando um participante for cadastrado, ele poderá ser criado usando um perfil já existente de um médico, no qual sempre será um palestrante.
+
+##DIAGRAMA DE FLUXO (AGENDAMENTO MÉDICO) <br>
+<img src="https://github.com/hnrq404/ProjetoPOO/blob/main/UML_Sistemas-AGENDAMENTO-CONSULTA.drawio.png" alt="img-center">
