@@ -23,8 +23,8 @@ Além disso, a integração que ocorre entre os nossos sistemas é fazer com que
 <h3>DIAGRAMA DE FLUXO - (AGENDAMENTO MÉDICO)</h3><br>
 <img src="https://github.com/hnrq404/ProjetoPOO/blob/main/UML_Sistemas-AGENDAMENTO-CONSULTA.drawio.png" alt="img-agendamento_medico">
 <h3>UML CLINICA MÉDICA</h3></h3><br>
-<img src="https://github.com/hnrq404/ProjetoPOO/blob/main/UML_Sistemas-AGENDAMENTO-CONSULTA.drawio.png" alt="img-agendamento_medico">
+<img src="https://github.com/hnrq404/ProjetoPOO/blob/main/UML_Sistemas-UML-EVENTO.drawio.png" alt="img-agendamento_medico">
 <h3>UML RESTAURANTE</h3><br>
-<img src="https://github.com/hnrq404/ProjetoPOO/blob/main/UML_Sistemas-AGENDAMENTO-CONSULTA.drawio.png" alt="img-agendamento_medico">
+<img src="https://github.com/hnrq404/ProjetoPOO/blob/main/UML_Sistemas-UML-RESTAURANTE.drawio.png" alt="img-agendamento_medico">
 <h3>UML EVENTOS</h3><br>
-<img src="https://github.com/hnrq404/ProjetoPOO/blob/main/UML_Sistemas-AGENDAMENTO-CONSULTA.drawio.png" alt="img-agendamento_medico">
+<img src="https://github.com/hnrq404/ProjetoPOO/blob/main/UML_Sistemas-UML-EVENTO.drawio.png" alt="img-agendamento_medico">
